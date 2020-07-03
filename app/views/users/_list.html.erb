@@ -1,0 +1,29 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3">
+			<h2>User info</h2>
+			<table class="table">
+				<%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg" %>
+				<%= user.name %>
+				<%= user.introduction %>
+			</table>
+			<div class="row">
+				<%= link_to "show", user_path(user) %>
+			</div>
+			<h2>New book</h2>
+			<div class="field row">
+				<%= form_for @book do |f| %>
+				<%= f.label :title %>
+				<%= f.text_field :title %>
+				<div class="field row">
+					<%= f.label :Opinion %>
+					<%= f.text_area :body %>
+				</div>
+				<div class="actions row">
+					<%= f.submit "Create Book" %>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
