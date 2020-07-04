@@ -1,6 +1,6 @@
 <div class="container">
 	<% if flash[:notice] %>
-	<p class="notice"><%= flash[:notice] %></p>
+	<p id="notice"><%= flash[:notice] %></p>
 	<% end %>
 	<%= render "devise/shared/show", user: @user, book: @book %>
 	<div class="col-xs-9">
