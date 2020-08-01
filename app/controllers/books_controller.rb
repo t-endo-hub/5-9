@@ -3,6 +3,7 @@ class BooksController < ApplicationController
 	before_action :correct_user,   only: [:edit, :update]
 
 	def index
+		@favorite = Favorite.new
 		@book = Book.new
 		@books = Book.all
 		@user = User.find_by(id: current_user.id)
@@ -25,6 +26,7 @@ class BooksController < ApplicationController
 	end
 
 	def show
+		@favorite = Favorite.new
 		@book = Book.find(params[:id])
 		@user = User.find_by(id: @book.user_id)
 	end
