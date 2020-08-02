@@ -41,8 +41,9 @@
 							<% if current_user.favorited_by?(book.id) %>
 								<td><%= link_to 'いいね外す', destroy_favorite_path(book), method: :DELETE %></td>
 							<% else %>
-								<td><%= link_to 'いいねする', create_favorite_path(book), method: :POST %></td>
+								<td><%= link_to 'いいねする',  create_favorite_path(book), method: :POST %></td>
 							<% end %>
+							<td>コメント件数: <%= book.book_comments.count %> </td>
 
 					</td>
 				</tr>
