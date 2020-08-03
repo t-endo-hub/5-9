@@ -7,10 +7,11 @@ Rails.application.routes.draw do
   end
   resources :users
   resources :relationships, only: [:create, :destroy]
+
+  get '/search' => 'search#search', as: 'search'
   
   get 'users/:id/folow' => 'users#follow', as: 'follow'
   get 'users/:id/follower' => 'users#follower', as: 'follower'
-
 
   post 'favorite/:id' => 'favorites#create', as: 'create_favorite'
   delete 'favorite/:id' => 'favorites#destroy', as: 'destroy_favorite'

@@ -1,0 +1,72 @@
+<div class="container">
+ <% if @model == 'user'%>
+ <h3>Users search for "<%= @content %>" </h3>
+  <table class="table table-hover table-inverse">
+			<thead>
+				<tr>
+					<th>image</th>
+					<th>name</th>
+					<th colspan="3"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @datas.each do |user| %>
+				<tr>
+					<td>
+						<%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg",size:'40x40' %>
+					</td>
+					<td>
+						<%= user.name %>
+					</td>
+					<td>
+						フォロー数:<%= user.followings.count %>
+					</td>
+					<td>
+						フォロワー数:<%= user.followers.count %>
+					</td>
+						<% if current_user.following?(user) %>
+							<td><%= link_to 'フォロー外す', relationship_path(user, follow_id: user.id), method: :DELETE %></td>
+							<% elsif current_user == user%>
+							<td></td>
+						<% else %>
+							<td><%= link_to 'フォローする',  relationships_path(user, follow_id: user.id), method: :POST %></td>
+						<% end %>
+					<td>
+						<%= link_to "Show", user_path(user) %>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+ <% else %>
+ <h3>Books search for "<%= @content %>" </h3>
+  <table class="table table-hover table-inverse">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Title</th>
+					<th>Opinion</th>
+					<th colspan="3"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @datas.each do |book| %>
+				<tr>
+					<td>
+						<%= link_to user_path(book.user_id) do %>
+						<%= attachment_image_tag book.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg",size:'40x40' %>
+					</td>
+					<td>
+						<%= link_to book.title, book_path(book) %>
+					</td>
+					<td>
+						<%= book.body %>
+						<% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
