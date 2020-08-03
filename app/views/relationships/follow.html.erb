@@ -1,13 +1,8 @@
-
 <div class="container">
-	<% if flash[:notice] %>
-	<p id="notice"></p>
-	<p><%= flash[:notice] %></p>
-	<% end %>
-	<%= render 'devise/shared/show', user: @user, book: @book %>
-	<div class="col-xs-9">
-		<h2>Users</h2>
-		<table class="table table-hover table-inverse">
+  <h2>Follow Users</h2>
+
+  
+  <table class="table table-hover table-inverse">
 			<thead>
 				<tr>
 					<th>image</th>
@@ -45,6 +40,3 @@
 				<% end %>
 			</tbody>
 		</table>
-	</div>
-</div>
-

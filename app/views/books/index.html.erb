@@ -37,11 +37,14 @@
 						<% end %>
 
 						
-						<td>いいね件数: <%= book.favorites.count %><td>
 							<% if current_user.favorited_by?(book.id) %>
-								<td><%= link_to 'いいね外す', destroy_favorite_path(book), method: :DELETE %></td>
+								<td><%= link_to destroy_favorite_path(book), method: :DELETE do %>
+									<span class="glyphicon glyphicon-heart"><%= book.favorites.count%></span>
+             				<% end %></td>
 							<% else %>
-								<td><%= link_to 'いいねする',  create_favorite_path(book), method: :POST %></td>
+								<td><%= link_to create_favorite_path(book), method: :POST do %>
+								<span class="glyphicon glyphicon-heart-empty"><%= book.favorites.count %></span>
+              			<% end %></td>
 							<% end %>
 							<td>コメント件数: <%= book.book_comments.count %> </td>
 
