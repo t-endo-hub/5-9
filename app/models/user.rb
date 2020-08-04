@@ -19,9 +19,7 @@ class User < ApplicationRecord
   				    length: { minimum: 2, maximum: 20}
   validates :introduction, length: { maximum: 50}
 
-  def favorited_by?(book_id)
-    favorites.where(book_id: book_id).exists?
-  end
+  
 
   def follow(other_user)
     unless self == other_user

@@ -1,21 +1,19 @@
 class BookCommentsController < ApplicationController
   before_action :authenticate_user!
-  # before_action :correct_user,   only: [:edit, :update]
 
   def create
     @book = Book.find(params[:book_id])
     @book_comment = @book.book_comments.new(book_comment_params)
     @book_comment.user_id = current_user.id
-    if @book_comment.save
-      redirect_back(fallback_location: root_path)
-    else
-      redirect_to book_path(@book)
-    end
+    @book_comment.save
+    @book_comments = @book.book_comments
   end
+  
   def destroy
+    @book = Book.find(params[:book_id])
     @book_comment = BookComment.find_by(id: params[:id])
     @book_comment.destroy
-    redirect_back(fallback_location: root_path)
+    @book_comments = @book.book_comments
   end
 
 
