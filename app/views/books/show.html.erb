@@ -20,35 +20,13 @@
 		<h2>Book detail</h2>
 		<table class="table">
 			<tbody>
-				<tr>
-					<td>
-						<%= link_to user_path(@user) do %>
-						<%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'40x40' %><br />
-						<%= @user.name %>
-					</td>
-					<td>
-						<%= link_to @book.title, book_path(@book) %>
-					</td>
-					<td>
-						<%= @book.body %>
-						<% end %>
-					</td>
-						<%= render 'books/favorites', book: @book %>
-					<% if @user.id == current_user.id %>
-					<td>
-						<%= link_to "Edit", edit_book_path(@book), class:"btn-sm btn-success" %>
-					</td>
-					<td>
-						<%= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "本当に消しますか？"} ,class:"btn-sm btn-danger" %>
-					</td>
-					<td>コメント件数: <%= @book.book_comments.count %> </td>
-
-					<% end %>
+				<tr id="book-<%= @book.id %>">
+					<%= render 'books/detail', book: @book %>
 				</tr>
+				
 			</tbody>
 		</table>
-		
-		<%= render 'book_comments/index', book_comments: @book_comments%>
+		<%= render 'book_comments/index', book_comments: @book_comments %>
 		<div class="col-xs-6">
 			<div class="comment-form">
 				<%= form_with(model: [@book, @book_comment]) do |f| %>
@@ -58,4 +36,3 @@
 		</div>
 	</div>
 </div>
-
