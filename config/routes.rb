@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
 
   get '/search' => 'search#search', as: 'search'
+
+  get '/postal' => 'users#postal', as: 'postal'
   
   get 'users/:id/folow' => 'users#follow', as: 'follow'
   get 'users/:id/follower' => 'users#follower', as: 'follower'

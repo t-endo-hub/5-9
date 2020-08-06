@@ -29,6 +29,29 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="field">
+    <%= f.label :postcode %><br>
+    <%= f.text_field :postcode %>
+  </div>
+
+  <div class="field">
+    <%= f.label :prefecture_code %><br>
+    <%=  f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :name, :name, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address_city %><br>
+    <%= f.text_field :address_city %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address_street %><br>
+    <%= f.text_field :address_street %>
+  </div>
+
+
+
+ 
   <div class="actions">
     <%= f.submit "Sign up", class:"btn btn-success" %>
   </div>
