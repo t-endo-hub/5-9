@@ -35,7 +35,9 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="col-xs-12">
-		<%= render 'layouts/map'%>
-	</div>
+	<% if @user == current_user %>
+		<div class="col-xs-12">
+			<%= render 'layouts/map'%>
+		</div>
+	<% end%>
 </div>
