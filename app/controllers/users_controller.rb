@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@book = Book.new
 		@books = Book.where(user_id: @user.id)
-		@user.address = @user.address_city
+		@user.address = @user.address_city + @user.address_street
 		@user.save
 	end
 
