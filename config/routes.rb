@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/search' => 'search#search', as: 'search'
 
   get '/postal' => 'users#postal', as: 'postal'
+  get '/map_request' => 'users#map', as: 'map_request'
   
   get 'users/:id/folow' => 'users#follow', as: 'follow'
   get 'users/:id/follower' => 'users#follower', as: 'follower'

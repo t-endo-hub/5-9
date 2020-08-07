@@ -15,6 +15,8 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@book = Book.new
 		@books = Book.where(user_id: @user.id)
+		@user.address = @user.address_city
+		@user.save
 	end
 
 	def edit
@@ -40,6 +42,11 @@ class UsersController < ApplicationController
 		@users = @user.followers
 	end
 
+	# def map
+	# 	respond_to do |format|
+	# 	format.js
+	# end
+
 
 	private
 	def user_params
@@ -47,14 +54,16 @@ class UsersController < ApplicationController
 	end
 
 	def correct_user
-		@user = User.find(params[:id])
-		redirect_to user_path(current_user.id) unless @user.id == current_user.id
+			@user = User.find(params[:id])
+			redirect_to user_path(current_user.id) unless @user.id == current_user.id
+		end
 	end
-end
 
-def ensure_correct_user
-	@user = User.find(params[:id])
-	unless @user == current_user
-		redirect_to user_path(current_user)
+
+	def ensure_correct_user
+		@user = User.find(params[:id])
+		unless @user == current_user
+			redirect_to user_path(current_user)
+		end
 	end
-end
+
