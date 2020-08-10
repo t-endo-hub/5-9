@@ -12,6 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   # def create
   #   super
+  #   # ThanksMailer.send_when_update(resource).deliver unless resource.invalid?
   # end
 
   # GET /resource/edit

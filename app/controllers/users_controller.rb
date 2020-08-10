@@ -27,6 +27,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		if @user.update(user_params)
 			redirect_to user_path(@user), notice: "You have updated user successfully."
+			ThanksMailer.send_when_update(current_user).deliver
 		else
 			render 'edit'
 		end
