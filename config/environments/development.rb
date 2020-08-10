@@ -38,8 +38,8 @@ config.action_mailer.smtp_settings = {
   :address => 'smtp.gmail.com',
   :port => 587,
   :domain => 'gmail.com',
-  :user_name => 'endotaku0608@gmail.com',
-  :password => 'qnfkfdyshoovdtvd',
+  :user_name => ENV['EMAIL_KEY'],
+  :password => ENV['PASS_KEY'],
   :authentication => :plain,
   :enable_starttls_auto => true
 }
