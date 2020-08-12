@@ -1,4 +1,4 @@
-class UserMailer < ActionMailer::Base
+class ThanksMailer < ApplicationMailer
   default from: "from@example.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -6,9 +6,8 @@ class UserMailer < ActionMailer::Base
   #
   #   en.user_mailer.registration_confirmation.subject
   #
-  def registration_confirmation
-    @greeting = "Hi"
-
-    mail to: "endotaku0608@gmail.com"
+  def registration_confirmation(user)
+    @user = user
+    mail to: user.email
   end
 end
